@@ -5,7 +5,7 @@ import { AppContextProvider, useAppContext } from "./components/context/contextP
 import { createRoot } from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import CheckinForm from "./pages/checkinForm/index";
-import UpdaterPage from "./pages/updater/index";
+// import UpdaterPage from "./pages/updater/index";
 import { Sidebar } from "./components";
 
 import './styles.css'
@@ -15,10 +15,10 @@ const router = createBrowserRouter([
     path: '/',
     element: <CheckinForm />,
   },
-  {
-    path: '/updater',
-    element: <UpdaterPage />,
-  },
+  // {
+  //   path: '/updater',
+  //   element: <UpdaterPage />,
+  // },
 ])
 
 function AppContent() {
