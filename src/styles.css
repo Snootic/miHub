@@ -1,0 +1,104 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+
+  color: #0f0f0f;
+  background-color: #f6f6f6;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+}
+
+.container {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+
+:root {
+  /* Light Theme */
+  --color-background: #f4f1eb;
+  --color-surface: #ffffff;
+  --color-border: #dcd8d1;
+  --color-text: #4a4a4a;
+  --color-text-contrast: #c0caf5;
+  
+  --color-primary: #5c8dcb;
+  --color-secondary: #e6a43e;
+  --color-accent: #73ab84;
+
+  --color-error: #e54b4b;
+  --color-info: #4a90e2;
+  --color-success: #4e9a6e;
+  --color-warning: #ffb347;
+
+  --gradient-primary-start: #8ab8f2;
+  --gradient-primary-end: #5082bb;
+  --gradient-secondary-start: #f0c27b;
+  --gradient-secondary-end: #d09236;
+  --gradient-accent-start: #ff8c61;
+  --gradient-accent-end: #d07f36;
+  --gradient-success-start: #73ab84;
+  --gradient-success-end: #4e9a6e;
+  --gradient-info-start: #4a90e2;
+  --gradient-info-end: #357ab7;
+  --gradient-warning-start: #ffe082;
+  --gradient-warning-end: #e6a43e;
+  --gradient-danger-start: #e54b4b;
+  --gradient-danger-end: #b71c1c;
+}
+  
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark Theme */
+    --color-background: #1a1b26;
+    --color-surface: #24283b;
+    --color-border: #414868;
+    --color-text: #c0caf5;
+    --color-text-contrast: #303030;
+
+    --color-primary: #7aa2f7;
+    --color-secondary: #bb9af7;
+    --color-accent: #ff9e64;
+
+    --color-error: #f7768e;
+    --color-info: var(--color-primary);
+    --color-success: #9ece6a;
+    --color-warning: #e0af68;
+
+    --gradient-primary-start: #9eceff;
+    --gradient-primary-end: #5a7bbf;
+    --gradient-secondary-start: #d7bfff;
+    --gradient-secondary-end: #9a7ac2;
+    --gradient-accent-start: #ff9e64;
+    --gradient-accent-end: #c07a36;
+    --gradient-success-start: #9ece6a;
+    --gradient-success-end: #4e9a6e;
+    --gradient-info-start: #7aa2f7;
+    --gradient-info-end: #3d59a1;
+    --gradient-warning-start: #e0af68;
+    --gradient-warning-end: #cfc08a;
+    --gradient-danger-start: #f7768e;
+    --gradient-danger-end: #b71c1c;
+  }
+}
+
+body {
+  color: var(--color-text);
+  background-color: var(--color-background);
+}

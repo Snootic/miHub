@@ -1,0 +1,78 @@
+button {
+  display: flex;
+  border-color: var(--color-border);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15), 0 1.5px 4px rgba(0, 0, 0, 0.10);
+  opacity: 1;
+  border-radius: 8px; 
+  padding: 2px;
+  min-width: 100px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.35s;
+}
+
+button.primary {
+  background: linear-gradient(130deg, var(--gradient-primary-start) 40%, var(--gradient-primary-end) 60%);
+}
+
+button.secondary {
+  background: linear-gradient(130deg, var(--gradient-secondary-start) 40%, var(--gradient-secondary-end) 60%);
+}
+
+button.danger {
+  background: linear-gradient(130deg, var(--gradient-danger-start) 40%, var(--gradient-danger-end) 60%);
+}
+
+button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  
+  opacity: 0;
+  transition: opacity 0.35s;
+  z-index: 0;
+}
+
+button.primary::before {
+  background: linear-gradient(130deg, var(--gradient-secondary-start) 40%, var(--gradient-secondary-end) 60%);
+}
+
+button.secondary::before {
+  background: linear-gradient(130deg, var(--gradient-accent-start) 40%, var(--gradient-accent-end) 60%);
+}
+
+button.danger::before {
+  background: linear-gradient(130deg, var(--gradient-warning-start) 40%, var(--gradient-warning-end) 60%);
+}
+
+button.primary:hover {
+  border-color: var(--color-secondary);
+}
+
+button.secondary:hover {
+  border-color: var(--color-accent);
+}
+
+button.danger:hover {
+  border-color: var(--color-warning);
+}
+
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+button p {
+  font-size: 1rem;
+  color: var(--color-text-contrast);
+  position: relative;
+  z-index: 10;
+}
+
+button:hover::before {
+  opacity: 1;
+}

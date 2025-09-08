@@ -1,0 +1,67 @@
+{
+    "version": 1,
+    "disable_existing_loggers": false,
+    "formatters": {
+        "standard": {
+            "format": "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+        }
+    },
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+            "level": "DEBUG",
+            "formatter": "standard",
+            "stream": "ext://sys.stdout"
+        },
+        "debug_file": {
+            "class": "logging.FileHandler",
+            "level": "DEBUG",
+            "formatter": "standard",
+            "filename": "logs/debug.log",
+            "encoding": "utf8"
+        },
+        "promo_code_file": {
+            "class": "logging.FileHandler",
+            "level": "INFO",
+            "formatter": "standard",
+            "filename": "logs/promo_code.log",
+            "encoding": "utf8"
+        },
+        "checkin_file": {
+            "class": "logging.FileHandler",
+            "level": "INFO",
+            "formatter": "standard",
+            "filename": "logs/checkin.log",
+            "encoding": "utf8"
+        },
+        "standalone_tasks_file": {
+            "class": "logging.FileHandler",
+            "level": "INFO",
+            "formatter": "standard",
+            "filename": "logs/standalone_tasks.log",
+            "encoding": "utf8"
+        }
+    },
+    "loggers": {
+        "": {
+            "level": "DEBUG",
+            "handlers": ["console", "debug_file"],
+            "propagate": true
+        },
+        "mihub.hoyolab.promo_code": {
+            "level": "INFO",
+            "handlers": ["promo_code_file", "debug_file", "console"],
+            "propagate": false
+        },
+        "mihub.hoyolab.checkin": {
+            "level": "INFO",
+            "handlers": ["checkin_file", "debug_file", "console"],
+            "propagate": false
+        },
+        "mihub.hoyolab.standalone_tasks": {
+            "level": "INFO",
+            "handlers": ["standalone_tasks_file","debug_file", "console"],
+            "propagate": false
+        }
+    }
+}

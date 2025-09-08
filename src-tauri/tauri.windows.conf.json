@@ -1,0 +1,7 @@
+{
+  "bundle": {
+    "resources": {
+      "../Python/python311.dll": "."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+#hoyolabForm {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  justify-content: center;
+  gap: 5px;
+}
+
+#hoyolabForm > * {
+
+  align-self: center;
+}
+
+#hoyolabForm label {
+  align-self: flex-start;
+  text-align: start;
+}
