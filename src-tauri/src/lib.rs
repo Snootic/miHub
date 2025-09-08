@@ -102,7 +102,7 @@ pub fn handle_dependencies(app: &App) {
   
   let temp_dir = app.path().temp_dir().unwrap();
   
-  let requirements_url = "https://gist.githubusercontent.com/Snootic/ab325894aa85e8184714dea8a9a34925/raw/07f75e6c6dad064a9b6e61daa5cabce2cfab94d9/requirements.txt";
+  let requirements_url = "https://raw.githubusercontent.com/snootic/mihub/main/requirements.txt";
   
   let app_handle = app.handle().clone();
   tauri::async_runtime::spawn(async move {

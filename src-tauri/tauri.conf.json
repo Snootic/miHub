@@ -44,6 +44,11 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ],
-    "createUpdaterArtifacts": true
+    "createUpdaterArtifacts": true,
+    "resources": {
+      "../src/hoyolab": "src/hoyolab",
+      "../data": "data",
+      "../config": "config"
+    }
   }
 }
