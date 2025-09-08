@@ -9,7 +9,29 @@ struct AppUpdate {
   version: String,
 }
 
-pub async fn update(app: tauri::AppHandle) -> tauri_plugin_updater::Result<()> {
+#[tauri::command]
+pub async fn check_for_updates(app: tauri::AppHandle) -> Result<bool, String> {
+  match app.updater() {
+    Ok(updater) => {
+      match updater.check().await {
+        Ok(Some(_update)) => Ok(true),
+        Ok(None) => Ok(false),
+        Err(e) => Err(format!("Failed to check for updates: {}", e)),
+      }
+    }
+    Err(e) => Err(format!("Updater not available: {}", e)),
+  }
+}
+
+#[tauri::command]
+pub async fn start_update(app: tauri::AppHandle) -> Result<(), String> {
+  match update(app).await {
+    Ok(_) => Ok(()),
+    Err(e) => Err(format!("Update failed: {}", e)),
+  }
+}
+
+async fn update(app: tauri::AppHandle) -> tauri_plugin_updater::Result<()> {
   if let Some(update) = app.updater()?.check().await? {
     let mut downloaded = 0;
     
@@ -30,6 +52,7 @@ pub async fn update(app: tauri::AppHandle) -> tauri_plugin_updater::Result<()> {
       },
       || {
         println!("download finished");
+        let _ = app.emit("update-complete", ());
       },
     )
     .await?;
@@ -38,8 +61,9 @@ pub async fn update(app: tauri::AppHandle) -> tauri_plugin_updater::Result<()> {
     app.restart();
   } else {
     println!("no update available");
-    
-    Ok(())
+    let _ = app.emit("no-update-available", ());
   }
+  
+  Ok(())
 }
 

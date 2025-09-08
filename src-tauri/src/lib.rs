@@ -1,6 +1,3 @@
-mod handlers;
-use handlers::update;
-
 use std::{
   collections::HashMap,
   path::PathBuf,
@@ -82,19 +79,6 @@ async fn set_complete(
   }
   
   Ok(())
-}
-
-pub fn run_updater(app: &App) {
-  let handle = app.handle().clone();
-  tauri::async_runtime::spawn(async move {
-    let handle_clone: tauri::AppHandle = handle.clone();
-    let _ = update(handle_clone).await;
-    set_complete(
-      handle.clone(),
-      handle.clone().state::<Mutex<SideTasks>>(),
-      "updater".to_string()
-    ).await.unwrap();
-  });
 }
 
 pub fn handle_dependencies(app: &App) {

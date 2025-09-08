@@ -5,6 +5,7 @@
 mod checkin;
 mod process_call;
 mod promo_code;
+mod handlers;
 use mihub_lib;
 use tauri::{
   menu::{Menu, MenuItem},
@@ -176,9 +177,7 @@ fn main() {
     mihub_lib::initialize_modules(&app);
     
     let _ = process_call::set_sys_path(libs_binding);
-    
-    mihub_lib::run_updater(app);
-    
+
     mihub_lib::handle_dependencies(app);
     
     Ok(())
@@ -188,6 +187,8 @@ fn main() {
     checkin_handler::run_checkin,
     promo_code_handler::redeem_promo_code,
     promo_code_handler::run_code_redeem,
+    handlers::updater::check_for_updates,
+    handlers::updater::start_update,
     save_data
     ])
     .run(tauri::generate_context!())

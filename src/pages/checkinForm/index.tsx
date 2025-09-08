@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, {useState } from "react";
 import { Button, Input, Select } from "../../components";
 import { useCheckinForm, FormData } from "../../hooks/dailyCheckinForm";
+import { AppContextProvider } from "../../components/context/contextProvider";
 
 import './index.css'
 
@@ -58,82 +59,84 @@ const CheckinForm: React.FC = () => {
   };
 
   return (
-    <div className="container">
-      <form id="hoyolabForm" onSubmit={handleSubmit}>
-        <label htmlFor="mode">Modo:</label>
-        <Select
-          options={["daily_checkin", "redeem_promo_code"]}
-          value={mode}
-          setValue={setMode}
-        />
+    <AppContextProvider>
+      <div className="container">
+        <form id="hoyolabForm" onSubmit={handleSubmit}>
+          <label htmlFor="mode">Modo:</label>
+          <Select
+            options={["daily_checkin", "redeem_promo_code"]}
+            value={mode}
+            setValue={setMode}
+          />
 
-        <label htmlFor="game">Jogo:</label>
-        <Select
-          options={["nap", "genshin", "hkrpg"]}
-          value={game}
-          setValue={setGame}
-        />
-
-        <label htmlFor="account">Conta:</label>
-        <Input
-          placeholder="Conta"
-          value={account}
-          onChange={(e) => setAccount(e.target.value)}
-          disabled={validation.accountDisabled}
-        />
-
-        <label htmlFor="password">Senha:</label>
-        <Input
-          placeholder="Senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          type="password"
-          disabled={validation.passwordDisabled}
-        />
-
-        <label htmlFor="hoyolab_id">Hoyolab ID:</label>
-        <Input
-          placeholder="Hoyolab ID"
-          value={hoyolabId}
-          onChange={(e) => setHoyolabId(e.target.value)}
-          disabled={validation.hoyolabIdDisabled}
-        />
-
-        <label htmlFor="cookies">Cookies:</label>
-        <Input
-          placeholder="Cookies"
-          value={cookies}
-          onChange={(e) => setCookies(e.target.value)}
-          disabled={validation.cookiesDisabled}
-        />
-
-        {mode === "redeem_promo_code" && (
-          <div id="promoFields">
-            <label htmlFor="uid">UID:</label>
-            <Input
-              placeholder="UID"
-              value={uid}
-              onChange={(e) => setUid(e.target.value)}
+          <label htmlFor="game">Jogo:</label>
+          <Select
+            options={["nap", "genshin", "hkrpg"]}
+            value={game}
+            setValue={setGame}
             />
 
-            <label htmlFor="code">Código:</label>
-            <Input
-              placeholder="Código"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
+          <label htmlFor="account">Conta:</label>
+          <Input
+            placeholder="Conta"
+            value={account}
+            onChange={(e) => setAccount(e.target.value)}
+            disabled={validation.accountDisabled}
             />
-          </div>
-        )}
 
-        <Button
-          variant="primary"
-          type="submit"
-          disabled={isSubmitting || !validation.isValid}
-          text={isSubmitting ? "Enviando..." : "Enviar"}
-          style={{width: "200px"}}
-        />
-      </form>
-    </div>
+          <label htmlFor="password">Senha:</label>
+          <Input
+            placeholder="Senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            type="password"
+            disabled={validation.passwordDisabled}
+          />
+
+          <label htmlFor="hoyolab_id">Hoyolab ID:</label>
+          <Input
+            placeholder="Hoyolab ID"
+            value={hoyolabId}
+            onChange={(e) => setHoyolabId(e.target.value)}
+            disabled={validation.hoyolabIdDisabled}
+            />
+
+          <label htmlFor="cookies">Cookies:</label>
+          <Input
+            placeholder="Cookies"
+            value={cookies}
+            onChange={(e) => setCookies(e.target.value)}
+            disabled={validation.cookiesDisabled}
+            />
+
+          {mode === "redeem_promo_code" && (
+            <div id="promoFields">
+              <label htmlFor="uid">UID:</label>
+              <Input
+                placeholder="UID"
+                value={uid}
+                onChange={(e) => setUid(e.target.value)}
+                />
+
+              <label htmlFor="code">Código:</label>
+              <Input
+                placeholder="Código"
+                value={code}
+                onChange={(e) => setCode(e.target.value)}
+                />
+            </div>
+          )}
+
+          <Button
+            variant="primary"
+            type="submit"
+            disabled={isSubmitting || !validation.isValid}
+            text={isSubmitting ? "Enviando..." : "Enviar"}
+            style={{width: "200px"}}
+            />
+        </form>
+      </div>
+    </AppContextProvider>
   );
 };
 
