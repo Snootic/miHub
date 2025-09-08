@@ -6,9 +6,9 @@ interface sidebarProps {
 
 }
 
-export const Sidebar: React.FC<sidebarProps> = (...props) => {
+export const Sidebar: React.FC<sidebarProps> = (props) => {
   return (
-    <div className="sidebar">
+    <div className="sidebar" {...props}>
       <Button variant="secondary" text={"Update"}/>
     </div>
   )
